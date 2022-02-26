@@ -74,15 +74,55 @@ IMPORTANT DETAIL: You may not use the arithmetic operator + in this function. To
 Test this function by hand in the console to get it working, and when you think it is finished, uncomment the call for the testSumArray() function and see if the test passes.*/
 
 // Write your code here
+
+// Write your code here
 let testArray = [2, 3, 4]; //eslint-disable-line
 
 function sumArray(sumArr) { //eslint-disable-line
-
+    let numItems = sumArr.length;
+    let sumItems = 0;
+    let sumString = "";
+    let justSum = 0;
+  
+    for (i = 0; i < numItems; i++){
+      //console.log(i);
+      if(i > (numItems - 2)){
+        'Do nothing.'
+      } else { 
+        
+        //let testSumFunction = sum(sumArr[i], sumArr[i+1]);
+        //console.log(testSumFunction);
+        if (justSum === 0){
+          justSum = sum(sumArr[i], sumArr[i+1])[0];
+        } else {
+          justSum = sum(justSum, sumArr[i+1])[0];
+        }
+        //let justSum = sum(sumArr[i], sumArr[i+1])[0];
+        //console.log(justSum);
+      }
+      sumItems = justSum;
+      //sumItems = sumItems + parseInt(sumArr[i]);
+      sumString = sumString + sumArr[i];
+      if (i < (numItems - 1)){
+        sumString = sumString + ",";
+      } else {
+        sumString = sumString + " ";
+      };
+      //console.log(sumArr[i]);
+      //console.log(sumItems);
+      //console.log(sumString);
+    }
+    //console.log('The length of the array is: '+ numItems + '.');
+    sumString = sumString + `was passed in as an array of numbers, and ${sumItems} is their sum.`;
+  let sumResult = [sumItems, sumString];
+  console.log(sumString);
+  return sumResult;
 }
+sumArray(testArray);
 
 // Here is the test for sumArray(); uncomment it to run it
 
-// testSumArray(testArray);
+testSumArray(testArray);
 
 // Once you get the test passing, do an a-c-p cycle and synchronize the code between GitHub and your laptop. Don't forget to create a new branch for your work on the next question!
 
