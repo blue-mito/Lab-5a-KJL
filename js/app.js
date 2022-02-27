@@ -29,8 +29,8 @@ Test this function by hand in the console to get it working, and when you think 
 
 // Write your code here
 function multiply(a, b) { //eslint-disable-line
-    let multiNum = (parseInt(a) + parseInt(b));
-    let multiArray = [multiNum, `The product of ${a} and ${b} is ${sumNum}.`];
+    let multiNum = (parseInt(a) * parseInt(b));
+    let multiArray = [multiNum, `The product of ${a} and ${b} is ${multiNum}.`];
     return multiArray;
 }
 
@@ -138,11 +138,48 @@ Test this function by hand in the console to get it working, and when you think 
 
 // Write your code here
 function multiplyArray(multArr) { //eslint-disable-line
-
+    let numItems = multArr.length;
+    let multItems = 0;
+    let multString = "";
+    let justMult = 0;
+  
+    for (i = 0; i < numItems; i++){
+      //console.log(i);
+      if(i > (numItems - 2)){
+        'Do nothing.'
+      } else { 
+        
+        //let testSumFunction = sum(sumArr[i], sumArr[i+1]);
+        //console.log(testSumFunction);
+        if (justMult === 0){
+          justMult = multiply(multArr[i], multArr[i+1])[0];
+        } else {
+          justMult = multiply(justMult, multArr[i+1])[0];
+        }
+        //let justSum = sum(sumArr[i], sumArr[i+1])[0];
+        //console.log(justSum);
+      }
+      multItems = justMult;
+      //sumItems = sumItems + parseInt(sumArr[i]);
+      multString = multString + multArr[i];
+      if (i < (numItems - 1)){
+        multString = multString + ",";
+      } else {
+        multString = multString + " ";
+      };
+      //console.log(sumArr[i]);
+      //console.log(sumItems);
+      //console.log(sumString);
+    }
+    //console.log('The length of the array is: '+ numItems + '.');
+    multString = `The numbers ` +multString + `have a product of ${multItems}.`;
+  let multResult = [multItems, multString];
+  console.log(multString);
+  return multResult;
 }
-
+multiplyArray(testArray);
 // Here is the test for multiplyArray(); uncomment it to run it
-// testMultiplyArray(testArray);
+testMultiplyArray(testArray);
 
 // Once you get the test passing, do an a-c-p cycle and synchronize the code between GitHub and your laptop. 
 
